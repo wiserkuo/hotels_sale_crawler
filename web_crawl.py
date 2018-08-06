@@ -1,9 +1,9 @@
+# This Python file uses the following encoding: utf-8
+import os, sys,time
 import urllib.request
 from optparse import OptionParser
 from bs4 import BeautifulSoup
-import sys,time
-     
-    #說明
+from selenium import webdriver
 def usage():
 	print (''' \033[92m	crawl from to get something. \n
 	usage : python3 web_crawl.py [-g] [gameId]
@@ -101,21 +101,32 @@ if __name__ == '__main__':
         for match in matches:
             print(match.string);
             #print(match.string);
-    print("\nasdasd")
+    print("\nagoda")
+
     url = "https://www.agoda.com/zh-tw/pages/agoda/default/DestinationSearchResult.aspx?city=247771&languageId=20&userId=4b0b5e8a-7f50-4b6e-9790-b3b16a0b0d06&pageTypeId=103&origin=TW&locale=zh-TW&cid=1618670&tag=323699e6-7c3a-c519-85e3-8ac1c1f1eb8f&gclid=CjwKCAjwyrvaBRACEiwAcyuzRBGTZ6W851NUUbDD2VNmM30AaJV55KhLa_iy7PQmEiaXJTQvPh1SLhoCOW8QAvD_BwE&aid=82361&currencyCode=JPY&htmlLanguage=zh-tw&cultureInfoName=zh-TW&ckuid=4b0b5e8a-7f50-4b6e-9790-b3b16a0b0d06&prid=0&checkIn=2019-02-08&checkOut=2019-02-09&rooms=1&adults=2&children=0&priceCur=JPY&los=1&textToSearch=%E5%AF%8C%E5%A3%AB%E6%B2%B3%E5%8F%A3%E6%B9%96&hotelArea=242206&productType=-1&roomOffers=78322&sort=priceLowToHigh"
+   
+    driver = webdriver.Firefox()
+    driver.get(url)
+    print(driver.title)
+    #time.sleep(3)
+    #elem_searchboxbackdrop = driver.find_element_by_css_selector(".SearchboxBackdrop")
+    elem_calendaralert =driver.find_element_by_css_selector(".AlertMessage__close")
+    elem_calendaralert.click()
+    #driver.execute_script("window.scrollTo(0, Y)") 
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     if url is not None:
         #設置假的瀏覽器資訊
-        headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}
-        req = urllib.request.Request(url = url,headers=headers)
-        page = urllib.request.urlopen(req)
-        contentBytes = page.read().decode('utf-8', 'ignore')
-        soup = BeautifulSoup(str(contentBytes), "html.parser")
-        
+        #headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}
+        #req = urllib.request.Request(url = url,headers=headers)
+        #time.sleep(3)
+        #page = urllib.request.urlopen(req)
+        #contentBytes = page.read().decode('utf-8', 'ignore')
+        soup = BeautifulSoup(str(driver.page_source), "html.parser")
         #print(str(contentBytes))
         #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
         #soup = BeautifulSoup(contentBytes)
         matches = soup.find_all("h3", { "class" : "hotel-name" })
-        matches2 = soup.find_all("span", { "class" : "price soft-red" })
+        #matches2 = soup.find_all("span", { "class" : "price soft-red" })
         #matches[0].string=matches[0].string.decode('utf-8')
         for match in matches:
-            print(match.string +" "+match2.string);
+            print(match.string);
