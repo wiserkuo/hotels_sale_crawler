@@ -36,7 +36,7 @@ if __name__ == '__main__':
     url = None
     print("\njalan 1/26-29 x4 persons yuzawa")
     #if gameId is not None:
-    url = "https://www.jalan.net/160000/LRG_160500/?screenId=UWW1402&distCd=01&idx=0&rootCd=04&stayYear=2019&stayMonth=1&stayDay=26&stayCount=3&roomCount=1&adultNum=4&roomCrack=400000&kenCd=160000&lrgCd=160500&mvTabFlg=1&vosFlg=2&activeSort=1"
+    url = "https://www.jalan.net/160000/LRG_160500/?stayYear=2019&stayMonth=1&stayDay=26&stayCount=3&roomCount=1&adultNum=4&minPrice=0&maxPrice=999999&mealType=1&activeSort=1&kenCd=160000&lrgCd=160500&rootCd=04&distCd=01&roomCrack=400000&reShFlg=1&mvTabFlg=0&listId=1&screenId=UWW1402"
     #else: 
     #print ('Please input -g or -h')
      
@@ -51,21 +51,14 @@ if __name__ == '__main__':
         #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
         #soup = BeautifulSoup(contentBytes)
         matches = soup.find_all("a", { "class" : "s16_00 fb" })
-        matches2 = soup.find_all("span", { "class" : "s11_66" })
+        matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
         print(matches[2].string)
         #matches[0].string=matches[0].string.decode('utf-8')
-        print(matches2[0].string);
+        print(matches2[0].get_text().replace('\n',''))
 
         for i in range(len(matches)):
-            print(matches[i].string)
-
-        #for match in matches:
-        #    print(match.string);
-            #print(match2.string);
-
-        #for match in matches2:
-        #    print(match.string);    
+            print(matches[i].string + matches2[i].get_text().replace('\n',''))  
 
     print("\njalan 2/6 yuzawa")
     #if gameId is not None:
@@ -84,17 +77,14 @@ if __name__ == '__main__':
         #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
         #soup = BeautifulSoup(contentBytes)
         matches = soup.find_all("a", { "class" : "s16_00 fb" })
-        matches2 = soup.find_all("span", { "class" : "s11_66" })
+        matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
-
+        print(matches[2].string)
         #matches[0].string=matches[0].string.decode('utf-8')
-        print(matches3[0].string);
-        for match in matches:
-            print(match.string);
-            #print(match2.string);
+        print(matches2[0].get_text().replace('\n',''))
 
-        #for match in matches2:
-        #    print(match.string);    
+        for i in range(len(matches)):
+            print(matches[i].string + matches2[i].get_text().replace('\n',''))  
     print("\njalan 2/7 yuzawa")
     url = "https://www.jalan.net/170000/LRG_171400/SML_171408/?stayYear=2019&stayMonth=2&stayDay=7&stayCount=1&roomCount=1&adultNum=2&minPrice=0&maxPrice=999999&mealType=1&activeSort=1&contHideFlg=1&kenCd=170000&lrgCd=171400&smlCd=171408&distCd=01&roomCrack=200000&reShFlg=1"
     #else: 
@@ -111,17 +101,14 @@ if __name__ == '__main__':
         #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
         #soup = BeautifulSoup(contentBytes)
         matches = soup.find_all("a", { "class" : "s16_00 fb" })
-        matches2 = soup.find_all("span", { "class" : "s11_66" })
+        matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
-
+        #print(matches[2].string)
         #matches[0].string=matches[0].string.decode('utf-8')
+        #print(matches2[0].get_text().replace('\n',''))
         print(matches3[0].string);
-        for match in matches:
-            print(match.string);
-            #print(match2.string);
-
-        #for match in matches2:
-        #    print(match.string);    
+        for i in range(len(matches)):
+            print(matches[i].string + matches2[i].get_text().replace('\n',''))   
     print("\njalan 2/7 fuji lake")
     url = " https://www.jalan.net/150000/LRG_150600/SML_150602/?stayYear=2019&stayMonth=2&stayDay=7&stayCount=1&roomCount=1&adultNum=2&minPrice=0&maxPrice=999999&mealType=1&activeSort=1&contHideFlg=1&kenCd=150000&lrgCd=150600&smlCd=150602&distCd=01&roomCrack=200000&reShFlg=1&mvTabFlg=0&listId=4&screenId=UWW1402"
     if url is not None:
@@ -135,13 +122,14 @@ if __name__ == '__main__':
         #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
         #soup = BeautifulSoup(contentBytes)
         matches = soup.find_all("a", { "class" : "s16_00 fb" })
-        matches2 = soup.find_all("span", { "class" : "s11_66" })
+        matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
+        #print(matches[2].string)
         #matches[0].string=matches[0].string.decode('utf-8')
+        #print(matches2[0].get_text().replace('\n',''))
         print(matches3[0].string);
-        for match in matches:
-            print(match.string);
-            #print(match.string);
+        for i in range(len(matches)):
+            print(matches[i].string + matches2[i].get_text().replace('\n',''))  
     print("\njalan 2/8 fuji lake") 
     url = " https://www.jalan.net/150000/LRG_150600/SML_150602/?stayYear=2019&stayMonth=2&stayDay=8&stayCount=1&roomCount=1&adultNum=2&minPrice=0&maxPrice=999999&mealType=1&activeSort=1&contHideFlg=1&kenCd=150000&lrgCd=150600&smlCd=150602&distCd=01&roomCrack=200000&reShFlg=1&mvTabFlg=0&listId=4&screenId=UWW1402"
     if url is not None:
@@ -154,14 +142,15 @@ if __name__ == '__main__':
     #    print(str(contentBytes))
         #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
         #soup = BeautifulSoup(contentBytes)
-        matches = soup.find_all("a", { "class" : "s16_00 fb" })
-        matches2 = soup.find_all("span", { "class" : "s11_66" })
+        mmatches = soup.find_all("a", { "class" : "s16_00 fb" })
+        matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
+        #print(matches[2].string)
         #matches[0].string=matches[0].string.decode('utf-8')
+        #print(matches2[0].get_text().replace('\n',''))
         print(matches3[0].string);
-        for match in matches:
-            print(match.string);
-            #print(match.string);
+        for i in range(len(matches)):
+            print(matches[i].string + matches2[i].get_text().replace('\n',''))  
     print("\nagoda 2/8 fuji lake")
 
     url = "https://www.agoda.com/zh-tw/pages/agoda/default/DestinationSearchResult.aspx?city=247771&languageId=20&userId=4b0b5e8a-7f50-4b6e-9790-b3b16a0b0d06&pageTypeId=103&origin=TW&locale=zh-TW&cid=1618670&tag=323699e6-7c3a-c519-85e3-8ac1c1f1eb8f&gclid=CjwKCAjwyrvaBRACEiwAcyuzRBGTZ6W851NUUbDD2VNmM30AaJV55KhLa_iy7PQmEiaXJTQvPh1SLhoCOW8QAvD_BwE&aid=82361&currencyCode=JPY&htmlLanguage=zh-tw&cultureInfoName=zh-TW&ckuid=4b0b5e8a-7f50-4b6e-9790-b3b16a0b0d06&prid=0&checkIn=2019-02-08&checkOut=2019-02-09&rooms=1&adults=2&children=0&priceCur=JPY&los=1&textToSearch=%E5%AF%8C%E5%A3%AB%E6%B2%B3%E5%8F%A3%E6%B9%96&hotelArea=242206&productType=-1&roomOffers=78322&sort=priceLowToHigh"
