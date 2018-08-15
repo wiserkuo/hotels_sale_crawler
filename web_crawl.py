@@ -34,6 +34,39 @@ if __name__ == '__main__':
         usage()
     get_parameters()
     url = None
+    print("\njalan 1/26-29 x4 persons yuzawa")
+    #if gameId is not None:
+    url = "https://www.jalan.net/160000/LRG_160500/?screenId=UWW1402&distCd=01&idx=0&rootCd=04&stayYear=2019&stayMonth=1&stayDay=26&stayCount=3&roomCount=1&adultNum=4&roomCrack=400000&kenCd=160000&lrgCd=160500&mvTabFlg=1&vosFlg=2&activeSort=1"
+    #else: 
+    #print ('Please input -g or -h')
+     
+    if url is not None:
+        #設置假的瀏覽器資訊
+        headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}
+        req = urllib.request.Request(url = url,headers=headers)
+        page = urllib.request.urlopen(req)
+        contentBytes = page.read().decode('shift-jis', 'ignore')
+        soup = BeautifulSoup(str(contentBytes), "html.parser")
+    #    print(str(contentBytes))
+        #soup = BeautifulSoup( str(contentBytes).encode('shift-jis'), fromEncoding="shift-jis"
+        #soup = BeautifulSoup(contentBytes)
+        matches = soup.find_all("a", { "class" : "s16_00 fb" })
+        matches2 = soup.find_all("span", { "class" : "s11_66" })
+        matches3 = soup.find_all("span", { "class" : "s16_F60b" })
+        print(matches[2].string)
+        #matches[0].string=matches[0].string.decode('utf-8')
+        print(matches2[0].string);
+
+        for i in range(len(matches)):
+            print(matches[i].string)
+
+        #for match in matches:
+        #    print(match.string);
+            #print(match2.string);
+
+        #for match in matches2:
+        #    print(match.string);    
+
     print("\njalan 2/6 yuzawa")
     #if gameId is not None:
     url = "https://www.jalan.net/170000/LRG_171400/SML_171408/?stayYear=2019&stayMonth=2&stayDay=6&stayCount=1&roomCount=1&adultNum=2&minPrice=0&maxPrice=999999&mealType=1&activeSort=1&contHideFlg=1&kenCd=170000&lrgCd=171400&smlCd=171408&distCd=01&roomCrack=200000&reShFlg=1"
