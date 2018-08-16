@@ -34,7 +34,7 @@ if __name__ == '__main__':
         usage()
     get_parameters()
     url = None
-    print("\njalan 1/26-29 x4 persons yuzawa")
+    print("\njalan 1/26-29 x4 persons 野沢温泉")
     #if gameId is not None:
     url = "https://www.jalan.net/160000/LRG_160500/?stayYear=2019&stayMonth=1&stayDay=26&stayCount=3&roomCount=1&adultNum=4&minPrice=0&maxPrice=999999&mealType=1&activeSort=1&kenCd=160000&lrgCd=160500&rootCd=04&distCd=01&roomCrack=400000&reShFlg=1&mvTabFlg=0&listId=1&screenId=UWW1402"
     #else: 
@@ -53,10 +53,7 @@ if __name__ == '__main__':
         matches = soup.find_all("a", { "class" : "s16_00 fb" })
         matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
-        print(matches[2].string)
-        #matches[0].string=matches[0].string.decode('utf-8')
-        print(matches2[0].get_text().replace('\n',''))
-
+        print(matches3[0].string);
         for i in range(len(matches)):
             print(matches[i].string + matches2[i].get_text().replace('\n',''))  
 
@@ -79,10 +76,7 @@ if __name__ == '__main__':
         matches = soup.find_all("a", { "class" : "s16_00 fb" })
         matches2 = soup.find_all("span", { "class" : "s14_00 fb" })
         matches3 = soup.find_all("span", { "class" : "s16_F60b" })
-        print(matches[2].string)
-        #matches[0].string=matches[0].string.decode('utf-8')
-        print(matches2[0].get_text().replace('\n',''))
-
+        print(matches3[0].string);
         for i in range(len(matches)):
             print(matches[i].string + matches2[i].get_text().replace('\n',''))  
     print("\njalan 2/7 yuzawa")
